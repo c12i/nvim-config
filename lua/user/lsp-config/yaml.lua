@@ -41,6 +41,9 @@ M.setup = function()
 					["https://json.schemastore.org/prettierrc.json"] = "**/.prettierrc.{yaml,yml}",
 					["https://json.schemastore.org/eslintrc.json"] = "**/.eslintrc.{yaml,yml}",
 					-- (temporary) Holochain schemas
+					["https://raw.githubusercontent.com/andrewsomething/app-platform-json-schema/main/app_spec.json"] = {
+						"**/spec.{yaml,yml}",
+					},
 					["https://raw.githubusercontent.com/holochain/holochain/refs/heads/develop/crates/hc_bundle/schema/dna-manifest.schema.json"] = "**/dna.{yaml,yml}",
 					["https://raw.githubusercontent.com/holochain/holochain/refs/heads/develop/crates/hc_bundle/schema/happ-manifest.schema.json"] = "**/happ.{yaml,yml}",
 					["https://raw.githubusercontent.com/holochain/holochain/refs/heads/develop/crates/hc_bundle/schema/web-happ-manifest.schema.json"] = "**web-happ.{yaml,yml}",
