@@ -59,21 +59,22 @@ return {
       _G.lsp_on_attach = on_attach
       _G.lsp_capabilities = capabilities
 
-      -- Diagnostic config
+      -- Diagnostic config (new API)
       vim.diagnostic.config({
-        signs = true,
         update_in_insert = false,
         underline = true,
         severity_sort = true,
         virtual_text = { prefix = "●", source = "if_many" },
         float = { border = "rounded", source = "always" },
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+          },
+        },
       })
-
-      local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
 
       -- Setup mason-lspconfig
       mason_lspconfig.setup({
