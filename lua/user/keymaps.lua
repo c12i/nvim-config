@@ -63,6 +63,5 @@ lvim.keys.normal_mode["<leader>sv"] = function()
 	end
 end
 
--- Augument code
-lvim.keys.normal_mode["<leader>ac"] = ":Augment chat<CR>"
-lvim.keys.normal_mode["<leader>aC"] = ":Augment chat-toggle<CR>"
+-- Claude code
+lvim.keys.normal_mode["<leader>ac"] = ":ClaudeCode<CR>"

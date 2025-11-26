@@ -131,7 +131,15 @@ local plugins = {
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 	},
-	{ "augmentcode/augment.vim" },
+	{
+		"greggh/claude-code.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("claude-code").setup()
+		end,
+	},
 }
 
 lvim.plugins = plugins

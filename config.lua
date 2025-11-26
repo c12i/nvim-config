@@ -65,19 +65,6 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
 	end,
 })
 
--- Add current working directory to LSP workspace folders
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-	callback = function()
-		vim.g.augment_workspace_folders = { vim.fn.getcwd() }
-	end,
-})
-
-vim.api.nvim_create_autocmd({ "DirChanged" }, {
-	callback = function(ev)
-		vim.g.augment_workspace_folders = { ev.file }
-	end,
-})
-
 -- Plugin management
 require("user.plugins")
 
