@@ -62,7 +62,3 @@ opt.timeoutlen = 300
 
 -- Completion
 opt.completeopt = { "menu", "menuone", "noselect" }
-
--- SSH agent env vars
-vim.env.SSH_AUTH_SOCK = os.getenv("SSH_AUTH_SOCK")
-vim.env.SSH_AGENT_PID = os.getenv("SSH_AGENT_PID")
