@@ -13,6 +13,7 @@ return {
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
       { "<leader>fn", "<cmd>enew<cr>", desc = "New File" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Projects" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
 
       -- Search
