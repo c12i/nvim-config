@@ -19,7 +19,14 @@ map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Buffer navigation
 map("n", "<S-l>", ":bnext<CR>", opts)
 map("n", "<S-h>", ":bprevious<CR>", opts)
-map("n", "<leader>c", ":bdelete<CR>", { desc = "Close buffer" })
+map("n", "<leader>c", function()
+  local buf_count = #vim.fn.getbufinfo({ buflisted = 1 })
+  if buf_count > 1 then
+    vim.cmd("bprevious | bdelete #")
+  else
+    vim.cmd("bdelete")
+  end
+end, { desc = "Close current buffer" })
 
 -- Move lines up/down
 map("n", "<A-j>", ":m .+1<CR>==", opts)
@@ -53,13 +60,15 @@ map("n", "<leader>z", ":foldclose<CR>", { desc = "Fold close" })
 map("n", "<leader>zz", ":foldopen<CR>", { desc = "Fold open" })
 
 -- Toggle background
-map("n", "<leader>tb", ":lua vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'<CR>", { desc = "Toggle background" })
+map("n", "<leader>tb", ":lua vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'<CR>",
+  { desc = "Toggle background" })
 
 -- Toggle relative number
 map("n", "<leader>tn", ":lua vim.o.relativenumber = not vim.o.relativenumber<CR>", { desc = "Toggle relative number" })
 
 -- Toggle inlay hints
-map("n", "<leader>th", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", { desc = "Toggle inlay hints" })
+map("n", "<leader>th", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
+  { desc = "Toggle inlay hints" })
 
 -- Vsplit toggle
 map("n", "<leader>sv", function()
