@@ -40,4 +40,3 @@ require("lazy").setup("plugins", {
 
 -- Set colorscheme after plugins are loaded
 vim.cmd.colorscheme("gruvbox")
-

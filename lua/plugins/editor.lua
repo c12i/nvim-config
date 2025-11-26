@@ -99,7 +99,7 @@ return {
     "wfxr/minimap.vim",
     build = "cargo install --locked code-minimap",
     keys = {
-      { "<leader>mm", "<cmd>MinimapToggle<CR>", desc = "Toggle Minimap" },
+      { "<leader>tm", "<cmd>MinimapToggle<CR>", desc = "Toggle Minimap" },
     },
     config = function()
       vim.g.minimap_width = 10
