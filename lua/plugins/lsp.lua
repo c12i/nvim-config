@@ -90,7 +90,7 @@ return {
           "yamlls",
           "taplo",
           "svelte",
-          "volar",
+          "vue_ls",
           "prismals",
           "terraformls",
           "vimls",
