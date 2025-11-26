@@ -39,10 +39,17 @@ return {
           sh = { "shfmt" },
           bash = { "shfmt" },
         },
-        format_on_save = {
-          timeout_ms = 500,
-          lsp_fallback = true,
-        },
+        format_on_save = function(bufnr)
+          -- Disable for certain filetypes or if no formatter
+          local ignore_filetypes = {}
+          if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+            return
+          end
+          return {
+            timeout_ms = 500,
+            lsp_fallback = true,
+          }
+        end,
       })
     end,
   },
