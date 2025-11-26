@@ -9,20 +9,31 @@ return {
       vim.g.rustaceanvim = {
         server = {
           cmd = function()
+            -- Use Mason's rust-analyzer
             local mason_registry = require("mason-registry")
-            local ra_binary = mason_registry.is_installed("rust-analyzer")
-                and mason_registry.get_package("rust-analyzer"):get_install_path() .. "/rust-analyzer"
-              or "rust-analyzer"
-            return { ra_binary }
+            if mason_registry.is_installed("rust-analyzer") then
+              local pkg = mason_registry.get_package("rust-analyzer")
+              local path = pkg:get_install_path() .. "/rust-analyzer"
+              return { path }
+            end
+            -- Fallback: let rustaceanvim find it
+            return { "rust-analyzer" }
           end,
           on_attach = function(client, bufnr)
-            -- Use global on_attach if available
             if _G.lsp_on_attach then
               _G.lsp_on_attach(client, bufnr)
             end
-            -- Override gd for Rust
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
           end,
+          default_settings = {
+            ["rust-analyzer"] = {
+              checkOnSave = {
+                command = "clippy",
+              },
+              cargo = {
+                allFeatures = true,
+              },
+            },
+          },
         },
       }
     end,
@@ -36,4 +47,3 @@ return {
     end,
   },
 }
-
