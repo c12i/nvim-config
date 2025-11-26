@@ -36,7 +36,7 @@ Neovim configuration using lazy.nvim and Mason.
 ## Installation
 
 ```bash
-git clone <repo> ~/.config/nvim
+git clone https://github.com/c12i/nvim-config.git ~/.config/nvim
 nvim
 ```
 
@@ -64,6 +64,7 @@ Plugins install automatically on first launch.
 ## LSP Servers
 
 Managed by Mason. Auto-installed:
+
 - lua_ls, ts_ls, pyright, gopls, rust_analyzer
 - bashls, dockerls, html, cssls, jsonls, yamlls
 - taplo, svelte, vue_ls, prismals, terraformls, vimls, emmet_ls
@@ -71,6 +72,7 @@ Managed by Mason. Auto-installed:
 ## Formatters
 
 Managed by conform.nvim:
+
 - prettier (js/ts/css/html/json/yaml/md)
 - stylua (lua)
 - black (python)
@@ -112,6 +114,7 @@ Restart nvim or run `:Lazy sync`.
 Edit `lua/plugins/lsp.lua`:
 
 1. Add server to `ensure_installed`:
+
 ```lua
 ensure_installed = {
   "lua_ls",
@@ -120,6 +123,7 @@ ensure_installed = {
 ```
 
 2. (Optional) Add custom configuration:
+
 ```lua
 handlers = {
   ["new_server"] = function()

@@ -63,6 +63,9 @@ map("n", "<leader>zz", ":foldopen<CR>", { desc = "Fold open" })
 map("n", "<leader>tb", ":lua vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'<CR>",
   { desc = "Toggle background" })
 
+-- Toggle alpha
+map("n", "<leader>tA", ":Alpha<CR>", { desc = "Toggle Alpha" })
+
 -- Toggle relative number
 map("n", "<leader>tn", ":lua vim.o.relativenumber = not vim.o.relativenumber<CR>", { desc = "Toggle relative number" })
 
