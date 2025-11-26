@@ -135,8 +135,8 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = {
-      { "<leader>/", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Toggle terminal" },
-      { "<C-\\>", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle floating terminal" },
+      { "<leader>/", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Toggle terminal", mode = { "n", "t" } },
+      { "<C-\\>", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle floating terminal", mode = { "n", "t" } },
     },
     config = function()
       require("toggleterm").setup({
