@@ -27,7 +27,7 @@ return {
   {
     "mbbill/undotree",
     keys = {
-      { "<leader>U", "<cmd>UndotreeToggle<CR>", desc = "Toggle Undotree" },
+      { "<leader>tU", "<cmd>UndotreeToggle<CR>", desc = "Toggle Undotree" },
     },
     config = function()
       vim.g.undotree_WindowLayout = 3
@@ -39,7 +39,7 @@ return {
     "nvim-pack/nvim-spectre",
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-      { "<C-s>", function() require("spectre").toggle() end, desc = "Toggle Spectre" },
+      { "<C-s>",      function() require("spectre").toggle() end,                            desc = "Toggle Spectre" },
       { "<leader>sw", function() require("spectre").open_visual({ select_word = true }) end, desc = "Search word" },
     },
     config = function()
@@ -54,7 +54,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     keys = {
       { "<leader>tt", "<cmd>TodoTelescope<CR>", desc = "Todo Telescope" },
-      { "<leader>tl", "<cmd>TodoLocList<CR>", desc = "Todo LocList" },
+      { "<leader>tl", "<cmd>TodoLocList<CR>",   desc = "Todo LocList" },
     },
     config = function()
       require("todo-comments").setup({})
@@ -135,8 +135,8 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = {
-      { "<leader>/", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Toggle terminal", mode = { "n", "t" } },
-      { "<C-\\>", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle floating terminal", mode = { "n", "t" } },
+      { "<leader>/", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Toggle terminal",          mode = { "n", "t" } },
+      { "<C-\\>",    "<cmd>ToggleTerm direction=float<cr>",      desc = "Toggle floating terminal", mode = { "n", "t" } },
     },
     config = function()
       require("toggleterm").setup({
