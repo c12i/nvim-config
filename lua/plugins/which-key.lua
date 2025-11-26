@@ -32,8 +32,8 @@ return {
         { "<leader>l", group = "LSP" },
         { "<leader>t", group = "Toggle" },
         { "<leader>b", group = "Buffer" },
+        { "<leader>x", group = "Trouble" },
       })
     end,
   },
 }
-
