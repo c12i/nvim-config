@@ -2,6 +2,11 @@
 -- Migrated from LunarVim config.lua
 
 local opt = vim.opt
+local g = vim.g
+
+-- Disable netrw (using nvim-tree instead)
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 
 -- Theme
 vim.o.background = "dark" -- "light" or "dark"
@@ -61,4 +66,3 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 -- SSH agent env vars
 vim.env.SSH_AUTH_SOCK = os.getenv("SSH_AUTH_SOCK")
 vim.env.SSH_AGENT_PID = os.getenv("SSH_AGENT_PID")
-
