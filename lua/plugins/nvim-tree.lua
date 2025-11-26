@@ -10,6 +10,13 @@ return {
       require("nvim-tree").setup({
         view = {
           width = 35,
+          side = "left",
+          signcolumn = "yes",
+        },
+        actions = {
+          open_file = {
+            resize_window = true,
+          },
         },
         filters = {
           custom = {
