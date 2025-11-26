@@ -83,3 +83,16 @@ autocmd("BufWritePre", {
   end,
 })
 
+-- Open nvim-tree when opening a directory
+augroup("NvimTreeOpenOnDir", { clear = true })
+autocmd("VimEnter", {
+  group = "NvimTreeOpenOnDir",
+  callback = function(data)
+    local directory = vim.fn.isdirectory(data.file) == 1
+    if directory then
+      vim.cmd.cd(data.file)
+      require("nvim-tree.api").tree.open()
+    end
+  end,
+})
+
