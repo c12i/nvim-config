@@ -65,7 +65,7 @@ return {
         underline = true,
         severity_sort = true,
         virtual_text = { prefix = "●", source = "if_many" },
-        float = { border = "rounded", source = "always" },
+        float = { border = "rounded", source = "always", pad_top = 1, pad_bottom = 1 },
         signs = {
           text = {
             [vim.diagnostic.severity.ERROR] = " ",
@@ -96,6 +96,7 @@ return {
           "terraformls",
           "vimls",
           "emmet_ls",
+          "rust_analyzer",
         },
         automatic_installation = true,
         handlers = {

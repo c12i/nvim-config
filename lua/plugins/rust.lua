@@ -14,4 +14,17 @@ return {
       })
     end,
   },
+  {
+    "rust-lang/rust.vim",
+    ft = { "rust" },
+    init = function()
+      -- Ensure gd works for rust files
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "rust",
+        callback = function(event)
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = event.buf, desc = "Go to definition" })
+        end,
+      })
+    end,
+  },
 }
