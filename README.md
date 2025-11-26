@@ -13,20 +13,24 @@ Neovim configuration using lazy.nvim and Mason.
     │   ├── keymaps.lua   # Keybindings
     │   └── autocmds.lua  # Autocommands
     └── plugins/
-        ├── colorscheme.lua
-        ├── treesitter.lua
-        ├── nvim-tree.lua
-        ├── lualine.lua
-        ├── which-key.lua
-        ├── telescope.lua
-        ├── cmp.lua
-        ├── lsp.lua
-        ├── lsp-servers.lua
-        ├── formatting.lua
-        ├── git.lua
-        ├── editor.lua
-        ├── rust.lua
-        └── typescript.lua
+        ├── alpha.lua         # Dashboard
+        ├── bufferline.lua    # Buffer tabs
+        ├── cmp.lua           # Completions
+        ├── colorscheme.lua   # Gruvbox theme
+        ├── editor.lua        # Editor plugins (autopairs, surround, etc)
+        ├── formatting.lua    # conform.nvim formatters
+        ├── git.lua           # Git integration
+        ├── lsp.lua           # LSP configuration
+        ├── lualine.lua       # Statusline
+        ├── nvim-tree.lua     # File explorer
+        ├── project.lua       # Project management
+        ├── rust.lua          # Rust-specific config
+        ├── telescope.lua     # Fuzzy finder
+        ├── toggleterm.lua    # Terminal
+        ├── treesitter.lua    # Syntax highlighting
+        ├── trouble.lua       # Diagnostics UI
+        ├── typescript.lua    # TypeScript-specific config
+        └── which-key.lua     # Keybinding hints
 ```
 
 ## Installation
@@ -41,15 +45,28 @@ Plugins install automatically on first launch.
 ## Dependencies
 
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - telescope live grep
-- [code-minimap](https://github.com/wfxr/code-minimap) - minimap
 - [fd](https://github.com/sharkdp/fd) - telescope find files
+- [lazygit](https://github.com/jesseduffield/lazygit) - git UI (optional)
+
+## Key Features
+
+- LSP with Mason (auto-install servers)
+- Treesitter syntax highlighting
+- Fuzzy finding with Telescope
+- Git integration (gitsigns, lazygit)
+- Auto-formatting on save
+- Buffer tabs with bufferline
+- File explorer with nvim-tree
+- Dashboard with recent projects
+- Terminal integration with toggleterm
+- Diagnostics UI with trouble.nvim
 
 ## LSP Servers
 
-Managed by Mason. Auto-installed on first launch:
-- lua_ls, ts_ls, pyright, gopls, rust-analyzer
+Managed by Mason. Auto-installed:
+- lua_ls, ts_ls, pyright, gopls, rust_analyzer
 - bashls, dockerls, html, cssls, jsonls, yamlls
-- taplo, svelte, volar, prismals, sqlls, nil_ls, terraformls
+- taplo, svelte, vue_ls, prismals, terraformls, vimls, emmet_ls
 
 ## Formatters
 
@@ -60,3 +77,95 @@ Managed by conform.nvim:
 - rustfmt (rust)
 - gofmt (go)
 - shfmt (bash)
+
+## Keymaps
+
+Leader key: `Space`
+
+Press `<leader>` to see all available keybindings via which-key.
+Press `<leader>sk` to search keymaps with Telescope.
+
+## Adding New Plugins
+
+Create a new file in `lua/plugins/`:
+
+```lua
+-- lua/plugins/myplugin.lua
+return {
+  {
+    "author/plugin-name",
+    event = "VeryLazy",  -- or ft = "filetype", cmd = "Command", keys = {...}
+    dependencies = { "other/plugin" },
+    config = function()
+      require("plugin-name").setup({
+        -- plugin options
+      })
+    end,
+  },
+}
+```
+
+Restart nvim or run `:Lazy sync`.
+
+## Adding LSP Servers
+
+Edit `lua/plugins/lsp.lua`:
+
+1. Add server to `ensure_installed`:
+```lua
+ensure_installed = {
+  "lua_ls",
+  "new_server",  -- add here
+},
+```
+
+2. (Optional) Add custom configuration:
+```lua
+handlers = {
+  ["new_server"] = function()
+    lspconfig.new_server.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        -- server-specific settings
+      },
+    })
+  end,
+}
+```
+
+Restart nvim or run `:Mason` to install.
+
+## Adding Keymaps
+
+Edit `lua/config/keymaps.lua`:
+
+```lua
+local map = vim.keymap.set
+
+-- Normal mode
+map("n", "<leader>x", ":Command<CR>", { desc = "Description" })
+
+-- Visual mode
+map("v", "<leader>x", ":Command<CR>", { desc = "Description" })
+
+-- Insert mode
+map("i", "<C-x>", "<Esc>:Command<CR>", { desc = "Description" })
+
+-- Multiple modes
+map({ "n", "v" }, "<leader>x", ":Command<CR>", { desc = "Description" })
+```
+
+Keymaps are loaded on startup. No restart needed.
+
+## Adding Formatters
+
+Edit `lua/plugins/formatting.lua`:
+
+```lua
+formatters_by_ft = {
+  newlang = { "formatter_name" },
+},
+```
+
+Install formatter via Mason: `:Mason` or ensure it's in PATH.
