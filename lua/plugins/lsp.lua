@@ -198,6 +198,19 @@ return {
               },
             })
           end,
+
+          ["sqls"] = function()
+            lspconfig.sqls.setup({
+              on_attach = on_attach,
+              capabilities = capabilities,
+              filetypes = { "sql", "mysql", "pgsql" },
+              settings = {
+                sqls = {
+                  connections = {},
+                },
+              },
+            })
+          end,
         },
       })
     end,
