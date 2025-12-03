@@ -5,6 +5,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Set terminal title to current directory
+vim.opt.title = true
+vim.opt.titlestring = "%{fnamemodify(getcwd(), ':t')}"
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
