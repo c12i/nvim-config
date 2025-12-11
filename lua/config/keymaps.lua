@@ -92,8 +92,6 @@ map("n", "<C-u>", "<C-u>zz", opts)
 map("n", "n", "nzzzv", opts)
 map("n", "N", "Nzzzv", opts)
 
-
-
 -- Bufferline (tabs) - LunarVim style
 map("n", "<S-l>", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
 map("n", "<S-h>", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
@@ -107,3 +105,7 @@ map("n", "<leader>bf", ":Telescope buffers<CR>", { desc = "Find buffer" })
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", { desc = "Close all to the left" })
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", { desc = "Close all to the right" })
 map("n", "<leader>bD", ":BufferLineCloseOthers<CR>", { desc = "Close all other buffers" })
+
+-- golangci-lint
+vim.keymap.set('n', '<leader>gl', ':!golangci-lint run<CR>', { desc = 'Run golangci-lint' })
+vim.keymap.set('n', '<leader>gf', ':!golangci-lint run --fix<CR>', { desc = 'Run golangci-lint with fix' })
