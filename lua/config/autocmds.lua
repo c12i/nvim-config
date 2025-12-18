@@ -96,3 +96,13 @@ autocmd("VimEnter", {
     end
   end,
 })
+
+-- Global LSP keybindings - works for Rust, Go, Python, etc.
+autocmd("LspAttach", {
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  end,
+})
