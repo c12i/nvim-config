@@ -36,7 +36,7 @@ return {
             { get_lsp_clients, color = { gui = "italic" } },
             "encoding",
             "fileformat",
-            "filetype"
+            "filetype",
           },
           lualine_y = { "progress" },
           lualine_z = { "location" },

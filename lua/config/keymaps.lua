@@ -60,8 +60,12 @@ map("n", "<leader>z", ":foldclose<CR>", { desc = "Fold close" })
 map("n", "<leader>zz", ":foldopen<CR>", { desc = "Fold open" })
 
 -- Toggle background
-map("n", "<leader>tb", ":lua vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'<CR>",
-  { desc = "Toggle background" })
+map(
+  "n",
+  "<leader>tb",
+  ":lua vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'<CR>",
+  { desc = "Toggle background" }
+)
 
 -- Toggle alpha
 map("n", "<leader>tA", ":Alpha<CR>", { desc = "Toggle Alpha" })
@@ -70,8 +74,12 @@ map("n", "<leader>tA", ":Alpha<CR>", { desc = "Toggle Alpha" })
 map("n", "<leader>tn", ":lua vim.o.relativenumber = not vim.o.relativenumber<CR>", { desc = "Toggle relative number" })
 
 -- Toggle inlay hints
-map("n", "<leader>th", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
-  { desc = "Toggle inlay hints" })
+map(
+  "n",
+  "<leader>th",
+  ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
+  { desc = "Toggle inlay hints" }
+)
 
 -- Vsplit toggle
 map("n", "<leader>sv", function()
@@ -107,5 +115,5 @@ map("n", "<leader>bl", ":BufferLineCloseRight<CR>", { desc = "Close all to the r
 map("n", "<leader>bD", ":BufferLineCloseOthers<CR>", { desc = "Close all other buffers" })
 
 -- golangci-lint
-vim.keymap.set('n', '<leader>gl', ':!golangci-lint run<CR>', { desc = 'Run golangci-lint' })
-vim.keymap.set('n', '<leader>gf', ':!golangci-lint run --fix<CR>', { desc = 'Run golangci-lint with fix' })
+vim.keymap.set("n", "<leader>gl", ":!golangci-lint run<CR>", { desc = "Run golangci-lint" })
+vim.keymap.set("n", "<leader>gf", ":!golangci-lint run --fix<CR>", { desc = "Run golangci-lint with fix" })

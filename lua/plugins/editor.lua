@@ -39,8 +39,20 @@ return {
     "nvim-pack/nvim-spectre",
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-      { "<C-s>",      function() require("spectre").toggle() end,                            desc = "Toggle Spectre" },
-      { "<leader>sw", function() require("spectre").open_visual({ select_word = true }) end, desc = "Search word" },
+      {
+        "<C-s>",
+        function()
+          require("spectre").toggle()
+        end,
+        desc = "Toggle Spectre",
+      },
+      {
+        "<leader>sw",
+        function()
+          require("spectre").open_visual({ select_word = true })
+        end,
+        desc = "Search word",
+      },
     },
     config = function()
       require("spectre").setup()
@@ -54,7 +66,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     keys = {
       { "<leader>tt", "<cmd>TodoTelescope<CR>", desc = "Todo Telescope" },
-      { "<leader>tl", "<cmd>TodoLocList<CR>",   desc = "Todo LocList" },
+      { "<leader>tl", "<cmd>TodoLocList<CR>", desc = "Todo LocList" },
     },
     config = function()
       require("todo-comments").setup({})
@@ -139,19 +151,19 @@ return {
 
   -- Commenting
   {
-    'numToStr/Comment.nvim',
+    "numToStr/Comment.nvim",
     config = function()
-      require('Comment').setup({
+      require("Comment").setup({
         toggler = {
-          line = '<leader>/',
-          block = '<leader>?',
+          line = "<leader>/",
+          block = "<leader>?",
         },
         opleader = {
-          line = '<leader>/',
-          block = '<leader>?',
+          line = "<leader>/",
+          block = "<leader>?",
         },
       })
-    end
+    end,
   },
 
   -- Terminal
@@ -159,8 +171,8 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = {
-      { "<C-/>",  "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Toggle terminal",          mode = { "n", "t" } },
-      { "<C-\\>", "<cmd>ToggleTerm direction=float<cr>",      desc = "Toggle floating terminal", mode = { "n", "t" } },
+      { "<C-/>", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Toggle terminal", mode = { "n", "t" } },
+      { "<C-\\>", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle floating terminal", mode = { "n", "t" } },
     },
     config = function()
       require("toggleterm").setup({

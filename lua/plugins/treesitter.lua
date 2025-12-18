@@ -47,7 +47,7 @@ return {
         },
         indent = { enable = true },
         matchup = { enable = true },
-        fold = { enable = true }
+        fold = { enable = true },
       })
 
       -- Treesitter context

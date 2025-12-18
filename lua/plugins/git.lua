@@ -35,14 +35,22 @@ return {
 
           -- Navigation
           map("n", "]h", function()
-            if vim.wo.diff then return "]c" end
-            vim.schedule(function() gs.next_hunk() end)
+            if vim.wo.diff then
+              return "]c"
+            end
+            vim.schedule(function()
+              gs.next_hunk()
+            end)
             return "<Ignore>"
           end, { expr = true, desc = "Next hunk" })
 
           map("n", "[h", function()
-            if vim.wo.diff then return "[c" end
-            vim.schedule(function() gs.prev_hunk() end)
+            if vim.wo.diff then
+              return "[c"
+            end
+            vim.schedule(function()
+              gs.prev_hunk()
+            end)
             return "<Ignore>"
           end, { expr = true, desc = "Prev hunk" })
 
@@ -50,7 +58,9 @@ return {
           map("n", "<leader>ghs", gs.stage_hunk, { desc = "Stage hunk" })
           map("n", "<leader>ghr", gs.reset_hunk, { desc = "Reset hunk" })
           map("n", "<leader>ghp", gs.preview_hunk, { desc = "Preview hunk" })
-          map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, { desc = "Blame line" })
+          map("n", "<leader>ghb", function()
+            gs.blame_line({ full = true })
+          end, { desc = "Blame line" })
         end,
       })
     end,
@@ -59,11 +69,16 @@ return {
     "ruifm/gitlinker.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     keys = {
-      { "<leader>gy", function() require("gitlinker").get_buf_range_url("n") end, desc = "Copy git link" },
+      {
+        "<leader>gy",
+        function()
+          require("gitlinker").get_buf_range_url("n")
+        end,
+        desc = "Copy git link",
+      },
     },
     config = function()
       require("gitlinker").setup()
     end,
   },
 }
-
