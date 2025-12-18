@@ -42,18 +42,13 @@ nvim
 
 Plugins install automatically on first launch.
 
-## Dependencies
-
-- [ripgrep](https://github.com/BurntSushi/ripgrep) - telescope live grep
-- [fd](https://github.com/sharkdp/fd) - telescope find files
-- [lazygit](https://github.com/jesseduffield/lazygit) - git UI (optional)
-
 ## Key Features
 
 - LSP with Mason (auto-install servers)
 - Treesitter syntax highlighting
 - Fuzzy finding with Telescope
-- Git integration (gitsigns, lazygit)
+- Global search and replace with Nvim Spectre
+- Git integration (gitsigns, vim-fugitive)
 - Auto-formatting on save
 - Buffer tabs with bufferline
 - File explorer with nvim-tree
@@ -67,7 +62,7 @@ Managed by Mason. Auto-installed:
 
 - lua_ls, ts_ls, pyright, gopls, rust_analyzer
 - bashls, dockerls, html, cssls, jsonls, yamlls
-- taplo, svelte, vue_ls, prismals, terraformls, vimls, emmet_ls
+- taplo, svelte, vue_ls, prismals, terraformls, vimls, emmet_ls, none_ls (previously null_ls)
 
 ## Formatters
 
@@ -173,3 +168,34 @@ formatters_by_ft = {
 ```
 
 Install formatter via Mason: `:Mason` or ensure it's in PATH.
+
+## Running Checks Locally
+
+### Install Tools
+
+```bash
+# Install luacheck
+luarocks install luacheck
+
+# Install StyLua
+cargo install stylua
+
+# or on macOS:
+brew install stylua
+```
+
+### Run Checks
+
+```bash
+# Lint your Lua code
+luacheck .
+
+# Check formatting
+stylua --check .
+
+# Auto-format code
+stylua .
+
+# Test config loads
+nvim --headless -c "quit"
+```
