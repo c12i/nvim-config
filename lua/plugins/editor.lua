@@ -47,7 +47,7 @@ return {
     end,
   },
 
-  -- Todo comments
+  -- TODO comments
   {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
@@ -130,13 +130,37 @@ return {
     end,
   },
 
+  -- Spellchecking
+  {
+    "ravibrock/spellwarn.nvim",
+    event = "VeryLazy",
+    config = true,
+  },
+
+  -- Commenting
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup({
+        toggler = {
+          line = '<leader>/',
+          block = '<leader>?',
+        },
+        opleader = {
+          line = '<leader>/',
+          block = '<leader>?',
+        },
+      })
+    end
+  },
+
   -- Terminal
   {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = {
-      { "<leader>/", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Toggle terminal",          mode = { "n", "t" } },
-      { "<C-\\>",    "<cmd>ToggleTerm direction=float<cr>",      desc = "Toggle floating terminal", mode = { "n", "t" } },
+      { "<C-/>",  "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Toggle terminal",          mode = { "n", "t" } },
+      { "<C-\\>", "<cmd>ToggleTerm direction=float<cr>",      desc = "Toggle floating terminal", mode = { "n", "t" } },
     },
     config = function()
       require("toggleterm").setup({

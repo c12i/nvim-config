@@ -18,6 +18,7 @@ autocmd({ "FileType", "BufEnter" }, {
       ["TelescopePrompt"] = true,
       ["lazy"] = true,
       ["mason"] = true,
+      ["json"] = true,
 
       -- Buftypes
       ["prompt"] = true,
