@@ -145,8 +145,14 @@ return {
               capabilities = capabilities,
               settings = {
                 yaml = {
-                  schemaStore = { enable = false, url = "" },
+                  schemaStore = {
+                    enable = true,
+                    url = "https://www.schemastore.org/api/json/catalog.json",
+                  },
                   schemas = require("schemastore").yaml.schemas(),
+                  validate = false,
+                  hover = true,
+                  completion = true,
                 },
               },
             })
@@ -224,6 +230,7 @@ return {
                   gofumpt = true,
                 },
               },
+              filetypes = { "go", "gopls", "gowork", "gotmpl", "tmpl" },
             })
           end,
         },
