@@ -3,11 +3,13 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     local null_ls = require("null-ls")
-
     null_ls.setup({
       sources = {
-        -- Linting with golangci-lint
+        -- Go linting
         null_ls.builtins.diagnostics.golangci_lint,
+
+        -- Terraform formatting
+        null_ls.builtins.formatting.terraform_fmt,
       },
       -- Auto-format on save
       on_attach = function(client, bufnr)

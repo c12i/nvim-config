@@ -38,6 +38,7 @@ return {
           rust = { "rustfmt" },
           sh = { "shfmt" },
           bash = { "shfmt" },
+          gotmpl = { "gofmt" },
         },
         format_on_save = function(bufnr)
           -- Disable for certain filetypes or if no formatter
@@ -52,11 +53,5 @@ return {
         end,
       })
     end,
-  },
-
-  -- SchemaStore for JSON/YAML schemas
-  {
-    "b0o/schemastore.nvim",
-    lazy = true,
   },
 }

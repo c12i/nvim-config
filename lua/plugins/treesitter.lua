@@ -17,6 +17,8 @@ return {
           "css",
           "dockerfile",
           "go",
+          "gomod",
+          "gowork",
           "graphql",
           "html",
           "javascript",
