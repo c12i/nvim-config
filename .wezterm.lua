@@ -168,6 +168,19 @@ config.use_fancy_tab_bar = false
 config.window_background_opacity = 0.95
 config.macos_window_background_blur = 20
 
+-- Detect if running on Windows
+local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
+-- Default to WSL
+if is_windows then
+  -- config.default_prog = { "wsl.exe", "--cd", "~" }
+  config.default_domain = "WSL:Ubuntu"
+end
+-- Only enable Unix domains on actual Unix systems (macOS/Linux)
+if not is_windows then
+  config.unix_domains = { { name = "unix" } }
+  config.default_gui_startup_args = { "connect", "unix" }
+end
+
 -- Enable session persistence
 config.unix_domains = { { name = "unix" } }
 config.default_gui_startup_args = { "connect", "unix" }

@@ -13,18 +13,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Setup Lua
         uses: leafo/gh-actions-lua@v10
         with:
           luaVersion: "5.1"
-
       - name: Setup Luarocks
         uses: leafo/gh-actions-luarocks@v4
-
       - name: Install luacheck
         run: luarocks install luacheck
-
       - name: Run luacheck
         run: luacheck .
 
@@ -34,7 +30,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Setup Stylua
         uses: JohnnyMorganz/stylua-action@v4
         with:
@@ -42,11 +37,12 @@ jobs:
           version: latest
           args: --check .
 
-  test:
+  test-neovim:
     name: Test Neovim Config
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [ubuntu-latest, macos-latest]
         nvim_version: ["stable", "nightly"]
     steps:
       - name: Checkout code
@@ -64,5 +60,38 @@ jobs:
           nvim --headless -c "quit" 2>&1 | tee /tmp/nvim-test.log
           if grep -i "error" /tmp/nvim-test.log; then
             echo "Config has errors!"
+            exit 1
+          fi
+
+  test-wezterm:
+    name: Test WezTerm Config
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install WezTerm (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+          echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+          sudo apt update
+          sudo apt install -y wezterm
+
+      - name: Install WezTerm (macOS)
+        if: matrix.os == 'macos-latest'
+        run: brew install --cask wezterm
+
+      - name: Test WezTerm config
+        run: |
+          mkdir -p ~/.config/wezterm
+          ln -sf ${{ github.workspace }}/wezterm.lua ~/.config/wezterm/wezterm.lua
+          wezterm --version
+          wezterm ls-fonts 2>&1 | tee /tmp/wezterm-test.log
+          if grep -i "error" /tmp/wezterm-test.log; then
+            echo "WezTerm config has errors!"
             exit 1
           fi

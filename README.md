@@ -1,6 +1,6 @@
 # nvim-config
 
-Neovim configuration using lazy.nvim and Mason.
+Neovim configuration using lazy.nvim and Mason. Tested on: MacOS and Linux (Ubuntu)
 
 ## Structure
 
