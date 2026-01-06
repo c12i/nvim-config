@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
--- Define color schemes
+-- Color schemes
 local gruvbox_dark = {
   foreground = "#ebdbb2",
   background = "#282828",
@@ -137,9 +137,9 @@ wezterm.on("window-config-reloaded", function(window, pane)
   window:set_config_overrides(overrides)
 end)
 
--- keybindings
+-- Keybindings
 config.keys = {
-  -- switching tab panes
+  -- Switching tab panes
   { key = "h", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Left") },
   { key = "j", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Down") },
   { key = "k", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Up") },
@@ -149,13 +149,24 @@ config.keys = {
   { key = "j", mods = "CTRL|SHIFT|ALT", action = wezterm.action.AdjustPaneSize({ "Down", 1 }) },
   { key = "k", mods = "CTRL|SHIFT|ALT", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
   { key = "l", mods = "CTRL|SHIFT|ALT", action = wezterm.action.AdjustPaneSize({ "Right", 1 }) },
-  -- closing tab pane
+  -- Closing tab pane
   { key = "x", mods = "CTRL|SHIFT", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
   -- Pass Ctrl+Arrow to Neovim
   { key = "LeftArrow", mods = "CTRL", action = wezterm.action.SendKey({ key = "LeftArrow", mods = "CTRL" }) },
   { key = "RightArrow", mods = "CTRL", action = wezterm.action.SendKey({ key = "RightArrow", mods = "CTRL" }) },
   { key = "UpArrow", mods = "CTRL", action = wezterm.action.SendKey({ key = "UpArrow", mods = "CTRL" }) },
   { key = "DownArrow", mods = "CTRL", action = wezterm.action.SendKey({ key = "DownArrow", mods = "CTRL" }) },
+  -- Reorder tabs
+  {
+    key = "h",
+    mods = "CMD|SHIFT",
+    action = wezterm.action.MoveTabRelative(-1),
+  },
+  {
+    key = "l",
+    mods = "CMD|SHIFT",
+    action = wezterm.action.MoveTabRelative(1),
+  },
 }
 
 config.font_size = 15
