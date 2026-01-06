@@ -40,6 +40,12 @@ git clone https://github.com/c12i/nvim-config.git ~/.config/nvim
 nvim
 ```
 
+**Optional [WezTerm](https://wezterm.org/index.html) Setup** (_if using WezTerm_)
+
+```bash
+ln -s ~/.config/nvim/.wezterm.lua ~/.wezterm.lua
+```
+
 Plugins install automatically on first launch.
 
 ## Key Features
