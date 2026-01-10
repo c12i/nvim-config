@@ -176,7 +176,7 @@ config.macos_window_background_blur = 0
 config.tab_bar_at_bottom = true
 config.window_padding = { left = 2, right = 2, top = 2, bottom = 2 }
 config.use_fancy_tab_bar = false
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.90
 config.macos_window_background_blur = 20
 
 -- Detect if running on Windows
