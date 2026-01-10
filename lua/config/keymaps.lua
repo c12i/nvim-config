@@ -115,5 +115,24 @@ map("n", "<leader>bl", ":BufferLineCloseRight<CR>", { desc = "Close all to the r
 map("n", "<leader>bD", ":BufferLineCloseOthers<CR>", { desc = "Close all other buffers" })
 
 -- golangci-lint
-vim.keymap.set("n", "<leader>gl", ":!golangci-lint run<CR>", { desc = "Run golangci-lint" })
-vim.keymap.set("n", "<leader>gf", ":!golangci-lint run --fix<CR>", { desc = "Run golangci-lint with fix" })
+map("n", "<leader>gl", ":!golangci-lint run<CR>", { desc = "Run golangci-lint" })
+map("n", "<leader>gf", ":!golangci-lint run --fix<CR>", { desc = "Run golangci-lint with fix" })
+
+-- Toggle transparency state
+local transparency_enabled = false
+local function toggle_transparency()
+  if transparency_enabled then
+    -- Restore background (you may need to adjust the color based on your colorscheme)
+    vim.cmd.colorscheme(vim.g.colors_name) -- Reloads the colorscheme
+    transparency_enabled = false
+    print("Transparency disabled")
+  else
+    -- Enable transparency
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+    transparency_enabled = true
+    print("Transparency enabled")
+  end
+end
+map("n", "<leader>tB", toggle_transparency, { desc = "Toggle transparency" })
