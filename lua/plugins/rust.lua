@@ -27,4 +27,9 @@ return {
       })
     end,
   },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^5",
+    ft = { "rust" },
+  },
 }
