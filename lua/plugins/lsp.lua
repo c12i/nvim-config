@@ -97,6 +97,7 @@ return {
           "vimls",
           "emmet_ls",
           "rust_analyzer",
+          "tailwindcss",
         },
         automatic_installation = true,
         handlers = {
@@ -219,6 +220,10 @@ return {
           end,
 
           ["gopls"] = function()
+            vim.filetype.add({
+              extension = { tmp = "html" },
+            })
+
             lspconfig.gopls.setup({
               settings = {
                 gopls = {
