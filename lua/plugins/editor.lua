@@ -1,5 +1,12 @@
 -- Editor enhancements
 return {
+  --Autopairs
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+  },
+
   -- Motion
   {
     "ggandor/leap.nvim",
