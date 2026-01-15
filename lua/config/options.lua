@@ -21,7 +21,7 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Spellchecking
-opt.spell = true
+opt.spell = false
 opt.spelllang = { "en" }
 
 -- General settings

@@ -140,22 +140,22 @@ end)
 -- Keybindings
 config.keys = {
   -- Switching tab panes
-  { key = "h", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Left") },
-  { key = "j", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Down") },
-  { key = "k", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Up") },
-  { key = "l", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Right") },
+  { key = "h",          mods = "CTRL|SHIFT",     action = wezterm.action.ActivatePaneDirection("Left") },
+  { key = "j",          mods = "CTRL|SHIFT",     action = wezterm.action.ActivatePaneDirection("Down") },
+  { key = "k",          mods = "CTRL|SHIFT",     action = wezterm.action.ActivatePaneDirection("Up") },
+  { key = "l",          mods = "CTRL|SHIFT",     action = wezterm.action.ActivatePaneDirection("Right") },
   -- Resize panes
-  { key = "h", mods = "CTRL|SHIFT|ALT", action = wezterm.action.AdjustPaneSize({ "Left", 1 }) },
-  { key = "j", mods = "CTRL|SHIFT|ALT", action = wezterm.action.AdjustPaneSize({ "Down", 1 }) },
-  { key = "k", mods = "CTRL|SHIFT|ALT", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
-  { key = "l", mods = "CTRL|SHIFT|ALT", action = wezterm.action.AdjustPaneSize({ "Right", 1 }) },
+  { key = "h",          mods = "CTRL|SHIFT|ALT", action = wezterm.action.AdjustPaneSize({ "Left", 1 }) },
+  { key = "j",          mods = "CTRL|SHIFT|ALT", action = wezterm.action.AdjustPaneSize({ "Down", 1 }) },
+  { key = "k",          mods = "CTRL|SHIFT|ALT", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
+  { key = "l",          mods = "CTRL|SHIFT|ALT", action = wezterm.action.AdjustPaneSize({ "Right", 1 }) },
   -- Closing tab pane
-  { key = "x", mods = "CTRL|SHIFT", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+  { key = "x",          mods = "CTRL|SHIFT",     action = wezterm.action.CloseCurrentPane({ confirm = true }) },
   -- Pass Ctrl+Arrow to Neovim
-  { key = "LeftArrow", mods = "CTRL", action = wezterm.action.SendKey({ key = "LeftArrow", mods = "CTRL" }) },
-  { key = "RightArrow", mods = "CTRL", action = wezterm.action.SendKey({ key = "RightArrow", mods = "CTRL" }) },
-  { key = "UpArrow", mods = "CTRL", action = wezterm.action.SendKey({ key = "UpArrow", mods = "CTRL" }) },
-  { key = "DownArrow", mods = "CTRL", action = wezterm.action.SendKey({ key = "DownArrow", mods = "CTRL" }) },
+  { key = "LeftArrow",  mods = "CTRL",           action = wezterm.action.SendKey({ key = "LeftArrow", mods = "CTRL" }) },
+  { key = "RightArrow", mods = "CTRL",           action = wezterm.action.SendKey({ key = "RightArrow", mods = "CTRL" }) },
+  { key = "UpArrow",    mods = "CTRL",           action = wezterm.action.SendKey({ key = "UpArrow", mods = "CTRL" }) },
+  { key = "DownArrow",  mods = "CTRL",           action = wezterm.action.SendKey({ key = "DownArrow", mods = "CTRL" }) },
   -- Reorder tabs
   {
     key = "h",
@@ -191,9 +191,5 @@ if not is_windows then
   config.unix_domains = { { name = "unix" } }
   config.default_gui_startup_args = { "connect", "unix" }
 end
-
--- Enable session persistence
-config.unix_domains = { { name = "unix" } }
-config.default_gui_startup_args = { "connect", "unix" }
 
 return config
