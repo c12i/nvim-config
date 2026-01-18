@@ -74,12 +74,9 @@ map("n", "<leader>tA", ":Alpha<CR>", { desc = "Toggle Alpha" })
 map("n", "<leader>tn", ":lua vim.o.relativenumber = not vim.o.relativenumber<CR>", { desc = "Toggle relative number" })
 
 -- Toggle inlay hints
-map(
-  "n",
-  "<leader>th",
-  ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
-  { desc = "Toggle inlay hints" }
-)
+map("n", "<leader>th", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }))
+end, { desc = "Toggle inlay hints" })
 
 -- Vsplit toggle
 map("n", "<leader>sv", function()

@@ -98,6 +98,8 @@ return {
           "emmet_ls",
           "rust_analyzer",
           "tailwindcss",
+          "buf_ls",
+          "cucumber_language_server",
         },
         automatic_installation = true,
         handlers = {
@@ -236,6 +238,16 @@ return {
                 },
               },
               filetypes = { "go", "gopls", "gowork", "gotmpl", "tmpl" },
+            })
+          end,
+
+          ["buf_ls"] = function()
+            lspconfig.bufls.setup({
+              on_attach = on_attach,
+              capabilities = capabilities,
+              cmd = { "bufls", "serve" },
+              filetypes = { "proto" },
+              root_dir = lspconfig.util.root_pattern("buf.yaml", "buf.work.yaml", ".git"),
             })
           end,
         },
