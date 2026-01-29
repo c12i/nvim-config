@@ -106,3 +106,14 @@ autocmd("LspAttach", {
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   end,
 })
+
+-- Remove red squiggly lines on spellcheck
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "SpellBad", { undercurl = false, underline = false })
+    vim.api.nvim_set_hl(0, "SpellCap", { undercurl = false, underline = false })
+    vim.api.nvim_set_hl(0, "SpellRare", { undercurl = false, underline = false })
+    vim.api.nvim_set_hl(0, "SpellLocal", { undercurl = false, underline = false })
+  end,
+})
