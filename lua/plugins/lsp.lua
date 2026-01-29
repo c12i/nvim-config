@@ -96,15 +96,12 @@ return {
           "terraformls",
           "vimls",
           "emmet_ls",
-          "rust_analyzer",
           "tailwindcss",
           "buf_ls",
           "cucumber_language_server",
         },
         automatic_installation = true,
         handlers = {
-
-          -- Default handler
           function(server_name)
             lspconfig[server_name].setup({
               on_attach = on_attach,
@@ -171,26 +168,6 @@ return {
                     typeCheckingMode = "basic",
                     autoSearchPaths = true,
                     useLibraryCodeForTypes = true,
-                  },
-                },
-              },
-            })
-          end,
-
-          ["rust_analyzer"] = function()
-            lspconfig.rust_analyzer.setup({
-              on_attach = on_attach,
-              capabilities = capabilities,
-              settings = {
-                ["rust-analyzer"] = {
-                  checkOnSave = {
-                    command = "clippy",
-                  },
-                  cargo = {
-                    allFeatures = true,
-                  },
-                  procMacro = {
-                    enable = true,
                   },
                 },
               },
