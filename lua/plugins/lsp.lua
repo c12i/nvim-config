@@ -81,7 +81,6 @@ return {
         ensure_installed = {
           "lua_ls",
           "ts_ls",
-          "pyright",
           "gopls",
           "bashls",
           "dockerls",
@@ -99,6 +98,7 @@ return {
           "tailwindcss",
           "buf_ls",
           "cucumber_language_server",
+          "basedpyright",
         },
         automatic_installation = true,
         handlers = {
@@ -158,12 +158,12 @@ return {
             })
           end,
 
-          ["pyright"] = function()
-            lspconfig.pyright.setup({
+          ["basedpyright"] = function()
+            lspconfig.basedpyright.setup({
               on_attach = on_attach,
               capabilities = capabilities,
               settings = {
-                python = {
+                basedpyright = {
                   analysis = {
                     typeCheckingMode = "basic",
                     autoSearchPaths = true,
