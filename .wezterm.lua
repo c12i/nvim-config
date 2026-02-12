@@ -118,6 +118,7 @@ local gruvbox_light = {
   },
 }
 
+-- XXX: Breaks wezterm (investigate)
 -- Automatically switch based on system appearance
 local function scheme_for_appearance(appearance)
   if appearance:find("Dark") then
@@ -129,6 +130,7 @@ end
 
 config.colors = scheme_for_appearance(wezterm.gui.get_appearance())
 
+-- XXX: Breaks wezterm (investigate)
 -- Force tab bar to update with appearance
 wezterm.on("window-config-reloaded", function(window, pane)
   local overrides = window:get_config_overrides() or {}
