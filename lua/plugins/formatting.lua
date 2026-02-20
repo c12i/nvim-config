@@ -28,6 +28,7 @@ return {
           html = { "prettier" },
           json = { "prettier" },
           yaml = { "prettier" },
+          astro = { "prettier" },
           markdown = { "prettier" },
           graphql = { "prettier" },
           svelte = { "prettier" },

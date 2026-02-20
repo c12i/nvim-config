@@ -98,6 +98,7 @@ return {
           "tailwindcss",
           "buf_ls",
           "cucumber_language_server",
+          "astro",
           "basedpyright",
         },
         automatic_installation = true,
@@ -225,6 +226,13 @@ return {
               cmd = { "bufls", "serve" },
               filetypes = { "proto" },
               root_dir = lspconfig.util.root_pattern("buf.yaml", "buf.work.yaml", ".git"),
+            })
+          end,
+
+          ["astro"] = function()
+            lspconfig.astro.setup({
+              on_attach = on_attach,
+              capabilities = capabilities,
             })
           end,
         },
