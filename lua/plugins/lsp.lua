@@ -186,19 +186,6 @@ return {
             })
           end,
 
-          ["sqls"] = function()
-            lspconfig.sqls.setup({
-              on_attach = on_attach,
-              capabilities = capabilities,
-              filetypes = { "sql", "mysql", "pgsql" },
-              settings = {
-                sqls = {
-                  connections = {},
-                },
-              },
-            })
-          end,
-
           ["gopls"] = function()
             vim.filetype.add({
               extension = { tmp = "html" },
@@ -231,6 +218,13 @@ return {
 
           ["astro"] = function()
             lspconfig.astro.setup({
+              on_attach = on_attach,
+              capabilities = capabilities,
+            })
+          end,
+
+          ["postgres_lsp"] = function()
+            lspconfig.postgres_lsp.setup({
               on_attach = on_attach,
               capabilities = capabilities,
             })
