@@ -33,6 +33,7 @@ return {
         { "<leader>t", group = "Toggle" },
         { "<leader>b", group = "Buffer" },
         { "<leader>x", group = "Trouble" },
+        { "<leader>S", group = "Session" },
       })
     end,
   },
