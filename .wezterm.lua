@@ -118,26 +118,26 @@ local gruvbox_light = {
   },
 }
 
--- XXX: Breaks wezterm (investigate)
--- Automatically switch based on system appearance
-local function scheme_for_appearance(appearance)
-  if appearance:find("Dark") then
-    return gruvbox_dark
-  else
-    return gruvbox_light
-  end
-end
+-- -- XXX: Breaks wezterm (investigate)
+-- -- Automatically switch based on system appearance
+-- local function scheme_for_appearance(appearance)
+--   if appearance:find("Dark") then
+--     return gruvbox_dark
+--   else
+--     return gruvbox_light
+--   end
+-- end
 
-config.colors = scheme_for_appearance(wezterm.gui.get_appearance())
+config.colors = gruvbox_dark
 
--- XXX: Breaks wezterm (investigate)
+-- -- XXX: Breaks wezterm (investigate)
 -- Force tab bar to update with appearance
-wezterm.on("window-config-reloaded", function(window, pane)
-  local overrides = window:get_config_overrides() or {}
-  local appearance = window:get_appearance()
-  overrides.colors = scheme_for_appearance(appearance)
-  window:set_config_overrides(overrides)
-end)
+-- wezterm.on("window-config-reloaded", function(window, pane)
+--   local overrides = window:get_config_overrides() or {}
+--   local appearance = window:get_appearance()
+--   overrides.colors = scheme_for_appearance(appearance)
+--   window:set_config_overrides(overrides)
+-- end)
 
 -- Keybindings
 config.keys = {
@@ -178,21 +178,21 @@ config.macos_window_background_blur = 0
 config.tab_bar_at_bottom = true
 config.window_padding = { left = 2, right = 2, top = 2, bottom = 2 }
 config.use_fancy_tab_bar = false
-config.window_background_opacity = 0.90
-config.macos_window_background_blur = 20
+-- config.window_background_opacity = 0.90
+-- config.macos_window_background_blur = 20
 
--- Detect if running on Windows
-local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
--- Default to WSL
-if is_windows then
-  -- config.default_prog = { "wsl.exe", "--cd", "~" }
-  config.default_domain = "WSL:Ubuntu"
-end
--- Only enable Unix domains on actual Unix systems (macOS/Linux)
-if not is_windows then
-  config.unix_domains = { { name = "unix" } }
-  config.default_gui_startup_args = { "connect", "unix" }
-end
+-- -- Detect if running on Windows
+-- local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
+-- -- Default to WSL
+-- if is_windows then
+--   -- config.default_prog = { "wsl.exe", "--cd", "~" }
+--   config.default_domain = "WSL:Ubuntu"
+-- end
+-- -- Only enable Unix domains on actual Unix systems (macOS/Linux)
+-- if not is_windows then
+--   config.unix_domains = { { name = "unix" } }
+--   config.default_gui_startup_args = { "connect", "unix" }
+-- end
 
 -- Enable session persistence
 config.unix_domains = { { name = "unix" } }

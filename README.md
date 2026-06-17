@@ -46,6 +46,13 @@ nvim
 ln -s ~/.config/nvim/.wezterm.lua ~/.wezterm.lua
 ```
 
+**Optional [Zellij](https://zellij.dev/) Setup** (_if using Zellij for window management, e.g. inside WezTerm_)
+
+```bash
+mkdir -p ~/.config/zellij
+ln -s ~/.config/nvim/.zellij.kdl ~/.config/zellij/config.kdl
+```
+
 Plugins install automatically on first launch.
 
 ## Key Features
