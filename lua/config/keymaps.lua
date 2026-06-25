@@ -16,6 +16,13 @@ map("n", "<C-Down>", ":resize +2<CR>", opts)
 map("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
+-- Resize windows with leader+hjkl (doesn't depend on arrow keys reaching nvim
+-- through the terminal/multiplexer layers)
+map("n", "<leader>Rh", ":vertical resize -2<CR>", { noremap = true, silent = true, desc = "Shrink width" })
+map("n", "<leader>Rl", ":vertical resize +2<CR>", { noremap = true, silent = true, desc = "Grow width" })
+map("n", "<leader>Rk", ":resize -2<CR>", { noremap = true, silent = true, desc = "Shrink height" })
+map("n", "<leader>Rj", ":resize +2<CR>", { noremap = true, silent = true, desc = "Grow height" })
+
 -- Buffer navigation
 map("n", "<S-l>", ":bnext<CR>", opts)
 map("n", "<S-h>", ":bprevious<CR>", opts)

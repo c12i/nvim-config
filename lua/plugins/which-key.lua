@@ -34,6 +34,7 @@ return {
         { "<leader>b", group = "Buffer" },
         { "<leader>x", group = "Trouble" },
         { "<leader>S", group = "Session" },
+        { "<leader>R", group = "Resize" },
       })
     end,
   },
