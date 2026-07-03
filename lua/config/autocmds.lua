@@ -107,6 +107,18 @@ autocmd("LspAttach", {
   end,
 })
 
+-- Word wrap for prose filetypes (markdown, text)
+augroup("ProseWrap", { clear = true })
+autocmd("FileType", {
+  group = "ProseWrap",
+  pattern = { "markdown", "text" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.breakindent = true
+  end,
+})
+
 -- Remove red squiggly lines on spellcheck
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",

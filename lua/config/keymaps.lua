@@ -80,6 +80,12 @@ map("n", "<leader>tA", ":Alpha<CR>", { desc = "Toggle Alpha" })
 -- Toggle relative number
 map("n", "<leader>tn", ":lua vim.o.relativenumber = not vim.o.relativenumber<CR>", { desc = "Toggle relative number" })
 
+-- Toggle spellcheck
+map("n", "<leader>ts", ":lua vim.o.spell = not vim.o.spell<CR>", { desc = "Toggle spellcheck" })
+
+-- Toggle word wrap
+map("n", "<leader>tw", ":lua vim.wo.wrap = not vim.wo.wrap<CR>", { desc = "Toggle word wrap" })
+
 -- Toggle inlay hints
 map("n", "<leader>th", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }))

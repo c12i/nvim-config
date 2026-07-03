@@ -20,8 +20,8 @@ opt.foldlevel = 99
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
--- Spellchecking
-opt.spell = true
+-- Spellchecking (disabled by default; toggle with <leader>ts)
+opt.spell = false
 opt.spelllang = { "en" }
 
 -- General settings
