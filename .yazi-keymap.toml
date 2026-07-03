@@ -1,0 +1,4 @@
+[[manager.prepend_keymap]]
+on = "l"
+run = ["open", "enter"]
+desc = "Open file or enter directory"
