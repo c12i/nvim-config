@@ -53,6 +53,12 @@ mkdir -p ~/.config/zellij
 ln -s ~/.config/nvim/.zellij.kdl ~/.config/zellij/config.kdl
 ```
 
+**Optional sync dotfiles (Configure ~`wezterm`~, `Ghostty`, `yazi`, `zellij`)**
+
+```bash
+./install.sh
+```
+
 Plugins install automatically on first launch.
 
 ## Key Features
