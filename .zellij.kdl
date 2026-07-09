@@ -197,6 +197,9 @@ keybinds clear-defaults=true {
         bind "Ctrl n" { SwitchToMode "resize"; }
         bind "Alt m" { SwitchToMode "resize"; }
     }
+    shared_except "locked" "move" {
+        bind "Ctrl m" { SwitchToMode "move"; }
+    }
     shared_except "normal" "locked" "entersearch" {
         bind "enter" { SwitchToMode "normal"; }
     }
