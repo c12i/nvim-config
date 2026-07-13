@@ -10,6 +10,16 @@ return {
     keys = {
       -- Find
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+      {
+        "<leader>fF",
+        function()
+          require("telescope.builtin").find_files({
+            hidden = true,
+            no_ignore = true,
+          })
+        end,
+        desc = "Find all files (incl. hidden/ignored)",
+      },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
       { "<leader>fn", "<cmd>enew<cr>", desc = "New File" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
