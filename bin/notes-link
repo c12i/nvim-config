@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+Usage: notes-link <vault-dirname> [repo-path]
+
+Creates @notes/ in <repo-path> (default: current directory) if it doesn't
+already exist, then symlinks it into the Obsidian vault as <vault-dirname>.
+
+Vault base defaults to ~/Documents/obsidian-notes/my-notes.
+Override with NOTES_VAULT_DIR.
+
+Examples:
+  notes-link rabbitmq
+  notes-link go ~/coding/babel-go
+EOF
+}
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+    usage
+    exit 0
+fi
+
+if [[ $# -lt 1 || $# -gt 2 ]]; then
+    usage
+    exit 1
+fi
+
+vault_name="$1"
+repo_path="$(cd "${2:-.}" && pwd)"
+vault_base="${NOTES_VAULT_DIR:-$HOME/Documents/obsidian-notes/my-notes}"
+notes_dir="$repo_path/@notes"
+target="$vault_base/$vault_name"
+
+if [[ ! -d "$vault_base" ]]; then
+    echo "error: vault dir does not exist: $vault_base" >&2
+    exit 1
+fi
+
+if [[ -e "$notes_dir" && ! -d "$notes_dir" ]]; then
+    echo "error: $notes_dir exists and is not a directory" >&2
+    exit 1
+fi
+mkdir -p "$notes_dir"
+
+if [[ -e "$target" || -L "$target" ]]; then
+    if [[ -L "$target" && "$(readlink "$target")" == "$notes_dir" ]]; then
+        echo "already linked: $target -> $notes_dir"
+        exit 0
+    fi
+    echo "error: $target already exists and is not a symlink to $notes_dir" >&2
+    echo "  current: $(ls -ld "$target")" >&2
+    exit 1
+fi
+
+ln -s "$notes_dir" "$target"
+echo "linked: $target -> $notes_dir"
+
+if command -v git >/dev/null 2>&1 && git -C "$repo_path" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    if ! git -C "$repo_path" check-ignore -q "@notes/"; then
+        echo "warning: @notes/ is not gitignored in $repo_path (expected it to be covered globally)" >&2
+    fi
+fi

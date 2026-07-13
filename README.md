@@ -7,6 +7,8 @@ Neovim configuration using lazy.nvim and Mason. Tested on: MacOS and Linux (Ubun
 ```
 .
 ├── init.lua              # Entry point, lazy.nvim bootstrap
+├── bin/
+│   └── notes-link        # Symlinks a repo's @notes/ dir into the Obsidian vault
 └── lua/
     ├── config/
     │   ├── options.lua   # Vim options
@@ -53,13 +55,43 @@ mkdir -p ~/.config/zellij
 ln -s ~/.config/nvim/.zellij.kdl ~/.config/zellij/config.kdl
 ```
 
-**Optional sync dotfiles (Configure ~`wezterm`~, `Ghostty`, `yazi`, `zellij`)**
+**Optional sync dotfiles (Configure ~`wezterm`~, `Ghostty`, `yazi`, `zellij`, `notes-link`)**
 
 ```bash
 ./install.sh
 ```
 
 Plugins install automatically on first launch.
+
+## Scripts
+
+### `notes-link`
+
+Personal notes live in an `@notes/` directory inside whatever repo you're working in, and get symlinked into an Obsidian vault so they're browsable/searchable/graphable there without living inside the vault's own directory tree.
+
+`notes-link` automates that wiring:
+
+- Creates `@notes/` in a repo (if it doesn't already exist).
+- Symlinks that `@notes/` dir into `~/Documents/obsidian-notes/my-notes/<name>`.
+- Is idempotent — safe to re-run, and refuses to clobber anything that isn't already the correct symlink.
+- Warns if `@notes/` isn't gitignored in that repo (it should be covered globally, see setup below).
+
+```bash
+notes-link <vault-dirname> [repo-path]
+
+# examples
+notes-link rabbitmq                    # links ./@notes as ~/Documents/obsidian-notes/my-notes/rabbitmq
+notes-link go ~/coding/babel-go        # links ~/coding/babel-go/@notes as .../my-notes/go
+```
+
+Override the vault base directory with `NOTES_VAULT_DIR` if your vault isn't at `~/Documents/obsidian-notes/my-notes`.
+
+**Setup on a fresh machine:**
+
+Running `./install.sh` (see [Installation](#installation)) handles both of these:
+
+1. Symlinks `bin/notes-link` to `~/.local/bin/notes-link` — make sure `~/.local/bin` is on your `PATH`.
+2. Adds `@notes/` to your global gitignore (`git config --global core.excludesFile`, creating `~/.gitignore` if you don't already have one configured), so no per-repo `.gitignore` entry is ever needed.
 
 ## Key Features
 
