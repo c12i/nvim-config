@@ -10,6 +10,7 @@ return {
   -- Motion
   {
     "ggandor/leap.nvim",
+    url = "https://codeberg.org/andyg/leap.nvim",
     name = "leap",
     keys = {
       { "s", mode = { "n", "x", "o" }, desc = "Leap forward" },
