@@ -18,6 +18,11 @@ return {
     end,
   },
 
+  {
+    "grafana/vim-alloy",
+    ft = "alloy",
+  },
+
   -- nvim-lspconfig + mason-lspconfig
   {
     "neovim/nvim-lspconfig",
