@@ -4,6 +4,7 @@ return {
   {
     "c12i/nvim-clipy",
     dependencies = { "nvim-telescope/telescope.nvim" },
+    lazy = false,
     keys = {
       {
         "<leader>sy",
