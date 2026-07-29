@@ -13,6 +13,13 @@ return {
         end,
         desc = "Clipboard history",
       },
+      {
+        "<leader>fy",
+        function()
+          require("nvim-clipy.browser").open()
+        end,
+        desc = "Clipboard history",
+      },
     },
     config = function()
       require("nvim-clipy").setup()
