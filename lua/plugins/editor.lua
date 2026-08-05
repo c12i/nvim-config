@@ -128,16 +128,6 @@ return {
     end,
   },
 
-  -- Markdown preview
-  {
-    "ellisonleao/glow.nvim",
-    cmd = "Glow",
-    keys = {
-      { "<leader>md", "<cmd>Glow<CR>", desc = "Markdown preview" },
-    },
-    config = true,
-  },
-
   -- AI assistance
   {
     "greggh/claude-code.nvim",
