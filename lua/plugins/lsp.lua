@@ -104,7 +104,7 @@ return {
           "buf_ls",
           "cucumber_language_server",
           "astro",
-          "basedpyright",
+          -- "basedpyright",
         },
         automatic_installation = true,
         handlers = {
@@ -164,21 +164,21 @@ return {
             })
           end,
 
-          ["basedpyright"] = function()
-            lspconfig.basedpyright.setup({
-              on_attach = on_attach,
-              capabilities = capabilities,
-              settings = {
-                basedpyright = {
-                  analysis = {
-                    typeCheckingMode = "basic",
-                    autoSearchPaths = true,
-                    useLibraryCodeForTypes = true,
-                  },
-                },
-              },
-            })
-          end,
+          -- ["basedpyright"] = function()
+          --   lspconfig.basedpyright.setup({
+          --     on_attach = on_attach,
+          --     capabilities = capabilities,
+          --     settings = {
+          --       basedpyright = {
+          --         analysis = {
+          --           typeCheckingMode = "basic",
+          --           autoSearchPaths = true,
+          --           useLibraryCodeForTypes = true,
+          --         },
+          --       },
+          --     },
+          --   })
+          -- end,
 
           ["emmet_ls"] = function()
             lspconfig.emmet_ls.setup({
